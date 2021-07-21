@@ -6,6 +6,8 @@ import {useEffect} from "react";
 import {deletePostThunk, getPostByIdThunk} from "../../redux/reducers/posts-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {getPostCommentsThunk, setComments} from "../../redux/reducers/comments-reducer";
+import {EditPostForm} from "../edit-post-form";
+import {setIsOpenEditForm} from "../../redux/action-creators";
 
 
 export const PostDetails = () => {
@@ -16,13 +18,17 @@ export const PostDetails = () => {
 
     const {
         postsReducer: {post},
-        appReducer: {isLoading},
+        appReducer: {isLoading, isOpenEditForm},
         commentsReducer: {comments}
     } = useSelector((state) => state);
 
     const deletePost = (postId) => {
         dispatch(deletePostThunk(postId));
-        history.goBack()
+        history.goBack();
+    }
+
+    const openForm = () => {
+        dispatch(setIsOpenEditForm(true));
     }
 
     useEffect(() => {
@@ -35,12 +41,15 @@ export const PostDetails = () => {
         return <div>Loading</div>
     }
 
+    if (isOpenEditForm) {
+        return <EditPostForm post={ post }/>
+    }
 
     return (
         <div>
             <b>{ post.title }: </b>
             <span>{ post.body }</span>
-            <button>Edit</button>
+            <button onClick={ () => openForm() }>Edit</button>
             <button onClick={ () => deletePost(postId) }>Delete</button>
             {
                 comments && <>

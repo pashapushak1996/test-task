@@ -16,8 +16,7 @@ export const CreatePostModal = ({userId}) => {
     };
 
     const onChange = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
+        const {name, value} = e.target;
         setValues(prevState => ({...prevState, [name]: value}));
     }
 
