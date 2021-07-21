@@ -1,4 +1,4 @@
-import {getPostComments} from "../../services/comments-service";
+import {getPostComments} from "../../services";
 import {setComments, setIsLoading} from "../action-creators";
 import {SET_COMMENTS} from "../action-types";
 

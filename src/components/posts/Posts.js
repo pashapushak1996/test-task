@@ -3,7 +3,7 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getUserPostsThunk} from "../../redux/reducers/posts-reducer";
 import {Post} from "../post";
-import {CreatePostModal} from "../create-post-modal/CreatePostModal";
+import {CreatePostModal} from "../create-post-modal/";
 
 
 export const Posts = () => {

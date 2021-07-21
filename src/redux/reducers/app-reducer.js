@@ -1,4 +1,4 @@
-import {SET_IS_LOADING, SET_IS_OPEN_MODAL} from "../action-types/app-action-types";
+import {SET_IS_LOADING, SET_IS_OPEN_MODAL} from "../action-types";
 
 
 const initialState = {

@@ -1,19 +1,10 @@
 //Action types
-import {createNewPost, deletePostById, getPostById, getUserPosts} from "../../services/posts-service";
-import {setIsLoading, setIsOpenModal} from "../action-creators";
-
-const SET_POSTS = "SET_POSTS";
-const SET_POST = "SET_POST";
-const DELETE_POST = "DELETE_POST";
-const CREATE_POST = "CREATE_POST";
+import {createNewPost, deletePostById, getPostById, getUserPosts} from "../../services/";
+import {createPostAC, deletePostAC, setIsLoading, setIsOpenModal, setPostAC, setPostsAC} from "../action-creators";
+import {CREATE_POST, DELETE_POST, SET_POST, SET_POSTS} from "../action-types";
 
 
 //Action creators
-
-const setPostsAC = (payload) => ({type: SET_POSTS, payload});
-const setPostAC = (payload) => ({type: SET_POST, payload});
-const deletePostAC = (payload) => ({type: DELETE_POST, payload});
-const createPostAC = (payload) => ({type: CREATE_POST, payload});
 
 
 //Posts thunk
