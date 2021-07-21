@@ -1,20 +1,31 @@
 import {useParams, useRouteMatch} from "react-router-dom";
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getUserPostsThunk} from "../../redux/reducers/post-reducer";
+import {getUserPostsThunk} from "../../redux/reducers/posts-reducer";
 import {Post} from "../post";
+import {CreatePostModal} from "../create-post-modal/CreatePostModal";
 
 
 export const Posts = () => {
+
+
     const dispatch = useDispatch();
     const {userId} = useParams();
     const {url} = useRouteMatch();
 
-    const {postsReducer: {userPosts}, loadingReducer: {isLoading}} = useSelector((state) => state);
+
+    const {
+        postsReducer: {userPosts},
+        appReducer: {isLoading, isOpenModal}
+    } = useSelector((state) => state);
+
 
     useEffect(() => {
-        dispatch(getUserPostsThunk(userId));
+        if (userPosts.length === 0) {
+            dispatch(getUserPostsThunk(userId));
+        }
     }, [userId]);
+
 
     if (isLoading) {
         return <div>Loading...</div>
@@ -22,7 +33,10 @@ export const Posts = () => {
 
     return (
         <div>
-            { userPosts.map((post) => <Post url={ url } key={ post.id } post={ post }/>) }
+            { isOpenModal && <CreatePostModal userId={ userId }/> }
+            { userPosts.map((post) => <Post key={ post.id }
+                                            url={ url }
+                                            post={ post }/>) }
         </div>
     );
 }

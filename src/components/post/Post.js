@@ -1,13 +1,20 @@
 import {Link} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {setIsOpenModal} from "../../redux/action-creators";
+
 
 export const Post = ({post}) => {
+
+    const dispatch = useDispatch();
+
+
     return (
         <div>
-            <b>{ post.id }</b>
             <span>{ post.title }</span>
             <Link to={ `/posts/${ post.id }` }>
-                Details
+                <button>Details</button>
             </Link>
+            <button onClick={ () => dispatch(setIsOpenModal(true)) }>Add new</button>
         </div>
     );
 }
