@@ -40,8 +40,10 @@ export const Posts = () => {
                                             url={ url }
                                             post={ post }/>) }
             <div className={ styles.buttonGroup }>
-                <Button variant={ 'success' } onClick={ () => dispatch(setIsOpenModal(true)) }>Add new</Button>
-                <Button variant={ "danger" } onClick={ () => history.goBack() }>Back</Button>
+                <Button variant={ 'success' }
+                        onClick={ () => dispatch(setIsOpenModal(true)) }>Add new</Button>
+                <Button variant={ "danger" }
+                        onClick={ () => history.goBack() }>Back</Button>
             </div>
         </div>
     );

@@ -38,7 +38,7 @@ export const PostDetails = () => {
         } else {
             dispatch(setComments(null));
         }
-    }, [postId, dispatch]);
+    }, [postId]);
 
 
     if (isLoading) {

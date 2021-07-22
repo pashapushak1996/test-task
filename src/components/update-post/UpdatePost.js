@@ -31,15 +31,25 @@ export const UpdatePost = ({post}) => {
             <h5>Edit post:</h5>
             <div className={ styles.formItem }>
                 <label>Title:</label>
-                <input type="text" onChange={ onChange } defaultValue={ post.title } name={ 'title' }/>
+                <input type="text"
+                       onChange={ onChange }
+                       defaultValue={ post.title }
+                       name={ 'title' }/>
             </div>
             <div className={ styles.formItem }>
                 <label>Body:</label>
-                <textarea onChange={ onChange } defaultValue={ post.body } name={ 'body' }/>
+                <textarea
+                    onChange={ onChange }
+                    defaultValue={ post.body }
+                    name={ 'body' }/>
             </div>
             <div className={ styles.formButtons }>
-                <Button onClick={ () => updatePost() } variant={ 'success' }>Save</Button>
-                <Button onClick={ () => closeEditPost() } variant={ 'danger' }>Cancel</Button>
+                <Button
+                    onClick={ () => updatePost() }
+                    variant={ 'success' }>Save</Button>
+                <Button
+                    onClick={ () => closeEditPost() }
+                    variant={ 'danger' }>Cancel</Button>
             </div>
         </form>
 
