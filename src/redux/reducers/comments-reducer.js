@@ -7,8 +7,6 @@ const initialState = {
     comments: null
 };
 
-//Thunk
-
 
 const getPostCommentsThunk = (postId) => async (dispatch) => {
     try {
