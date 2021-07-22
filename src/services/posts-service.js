@@ -36,6 +36,5 @@ export {
     createNewPost,
     getPostById,
     deletePostById,
-    updatePost,
-    getPosts
+    updatePost
 }
