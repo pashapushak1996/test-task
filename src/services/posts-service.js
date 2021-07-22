@@ -4,10 +4,6 @@ const getUserPosts = async (userId) => {
     const {data} = await axiosInstance.get(`/posts?userId=${ userId }`);
     return data;
 };
-const getPosts = async () => {
-    const {data} = await axiosInstance.get(`/posts`);
-    return data
-}
 
 
 const createNewPost = async (body) => {
