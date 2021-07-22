@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {getUserPostsThunk} from "../../redux/reducers/posts-reducer";
 import {Post} from "../post";
 import {CreatePostModal} from "../create-post-modal/";
-import {setIsOpenModal} from "../../redux/action-creators";
+import {setIsOpenModal, setUserId} from "../../redux/action-creators";
 import {Button} from "react-bootstrap";
 import styles from './Posts.module.css';
 
@@ -14,7 +14,6 @@ export const Posts = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const {userId} = useParams();
-    const {url} = useRouteMatch();
 
     const {
         postsReducer: {userPosts},
@@ -26,7 +25,7 @@ export const Posts = () => {
         if (+userId !== id) {
             dispatch(getUserPostsThunk(userId))
         }
-    }, []);
+    }, [userId]);
 
     if (isLoading) {
         return <div>Loading...</div>
@@ -35,13 +34,14 @@ export const Posts = () => {
     return (
         <div>
             { isOpenModal && <CreatePostModal userId={ userId }/> }
-
             { userPosts.map((post) => <Post key={ post.id }
-                                            url={ url }
                                             post={ post }/>) }
             <div className={ styles.buttonGroup }>
                 <Button variant={ 'success' }
-                        onClick={ () => dispatch(setIsOpenModal(true)) }>Add new</Button>
+                        onClick={ () => {
+                            dispatch(setIsOpenModal(true))
+                            dispatch(setUserId(+userId));
+                        } }>Add new</Button>
                 <Button variant={ "danger" }
                         onClick={ () => history.goBack() }>Back</Button>
             </div>
