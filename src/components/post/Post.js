@@ -1,22 +1,20 @@
 import {Link} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import {setIsOpenModal} from "../../redux/action-creators";
-
+import {Button} from "react-bootstrap";
+import styles from './Post.module.css';
 
 export const Post = ({post}) => {
 
-    const dispatch = useDispatch();
-
-
     return (
-        <div>
-            <span>{ post.title }</span>
+        <div className={ styles.postItem }>
+            <h6>Title:</h6>
+            <p>{ post.title }</p>
             <Link to={ `/posts/${ post.id }` }>
-                <button>Details</button>
+                <Button variant={ 'dark' }>Details</Button>
             </Link>
-            <button onClick={ () => dispatch(setIsOpenModal(true)) }>Add new</button>
         </div>
     );
 }
+
+
 
 

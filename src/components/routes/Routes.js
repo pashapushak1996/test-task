@@ -7,8 +7,8 @@ export const Routes = () => {
     return (
         <Switch>
             <Route path={ `/posts/:postId` } render={ (props) => <PostDetails { ...props }/> }/>
-            <Route path={ `/users/:userId/posts` } render={ (props) => <Posts  { ...props }/> }/>
-            <Route exact path={ `/users` } render={ (props) => <Users { ...props }/> }/>
+            <Route path={ `/:userId/posts` } render={ (props) => <Posts { ...props }/> }/>
+            <Route exact patch={ `/` } render={ () => <Users/> }/>
         </Switch>
     );
 }

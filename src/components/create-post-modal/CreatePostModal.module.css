@@ -2,11 +2,10 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(200, 200, 200, 0.5);
-    position: fixed;
+    position: absolute;
     display: flex;
     justify-content: center;
     align-items: center;
-    backdrop-filter: blur(2px);
 }
 
 .container {
@@ -20,17 +19,11 @@
     padding: 25px;
 }
 
+
 .title {
     display: inline-block;
     text-align: center;
     margin-top: 10px;
-}
-
-.titleCloseBtn {
-    background-color: transparent;
-    border: none;
-    font-size: 25px;
-    cursor: pointer;
 }
 
 .body {
@@ -43,6 +36,23 @@
     text-align: center;
 }
 
+.body label {
+    margin-bottom: 20px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.body textarea, input {
+    width: 300px;
+    font-size: 15px
+}
+
+.body textarea {
+    resize: none;
+    height: 150px;
+}
+
 .footer {
     flex: 20%;
     display: flex;
@@ -51,11 +61,8 @@
 }
 
 .footer button {
-    width: 150px;
-    height: 45px;
     margin: 10px;
     border: none;
-    background-color: cornflowerblue;
     color: white;
     border-radius: 8px;
     font-size: 20px;
@@ -63,5 +70,5 @@
 }
 
 .footer button:last-child {
-    background-color: crimson;
+    color: white;
 }

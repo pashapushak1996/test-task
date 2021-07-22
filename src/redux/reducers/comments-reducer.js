@@ -4,7 +4,7 @@ import {SET_COMMENTS} from "../action-types";
 
 
 const initialState = {
-    comments: []
+    comments: null
 };
 
 //Thunk
@@ -14,7 +14,9 @@ const getPostCommentsThunk = (postId) => async (dispatch) => {
     try {
         dispatch(setIsLoading(true));
         const comments = await getPostComments(postId);
-        dispatch(setComments(comments));
+        if (comments.length > 0) {
+            dispatch(setComments(comments));
+        }
     } catch (e) {
 
     } finally {

@@ -23,10 +23,18 @@ const getPostById = async (postId) => {
     return data;
 };
 
+const updatePost = async (postId, postData) => {
+    const {data} = await axiosInstance.put(`/posts/${ postId }`, {
+        ...postData
+    });
+    return data;
+}
+
 
 export {
     getUserPosts,
     createNewPost,
     getPostById,
-    deletePostById
+    deletePostById,
+    updatePost
 }
