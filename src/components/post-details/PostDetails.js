@@ -66,14 +66,14 @@ export const PostDetails = () => {
                     <Button variant={ 'outline-info' } onClick={ () => openEditPost() }>Edit</Button>
                     <Button variant={ 'secondary' } onClick={ () => deletePost(postId) }>Delete</Button>
                 </div>
-                <Card.Footer>
+                <div>
                     {
                         comments && <>
                             <h3>Comments: </h3>
                             { comments.map((comment) => <div key={ comment.id }>{ comment.name }</div>) }
                         </>
                     }
-                </Card.Footer>
+                </div>
             </Card.Body>
         </Card>
     );
