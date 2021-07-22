@@ -5,7 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {getPostCommentsThunk, setComments} from "../../redux/reducers/comments-reducer";
 import {UpdatePost} from "../update-post";
 import {setIsOpenEditForm, setUserId} from "../../redux/action-creators";
-import {Button} from "react-bootstrap";
+import {Button, Card} from "react-bootstrap";
+import styles from './PostDetails.module.css';
 
 
 export const PostDetails = () => {
@@ -51,28 +52,30 @@ export const PostDetails = () => {
     }
 
     return (
-        <div>
-            <div>
-                <h5>Title:</h5>
-                <span>{ post.title }</span>
-            </div>
-            <div>
-                <h5>Body:</h5>
-                <span>{ post.body }</span>
-            </div>
-            <div>
-                <Button variant={ 'outline-warning' } onClick={ () => history.goBack() }>Back</Button>
-                <Button variant={ 'outline-info' } onClick={ () => openEditPost() }>Edit</Button>
-                <Button variant={ 'secondary' } onClick={ () => deletePost(postId) }>Delete</Button>
-            </div>
-            {
-                comments && <>
-                    <h3>Comments: </h3>
-                    { comments.map((comment) => <div key={ comment.id }>{ comment.name }</div>) }
-                </>
-            }
-
-        </div>
+        <Card>
+            <Card.Body>
+                <div>
+                    <Card.Title>Title: { post.title }</Card.Title>
+                </div>
+                <div>
+                    <Card.Subtitle>Body:</Card.Subtitle>
+                    <Card.Text>{ post.body }</Card.Text>
+                </div>
+                <div className={ styles.buttonGroup }>
+                    <Button variant={ 'outline-warning' } onClick={ () => history.goBack() }>Back</Button>
+                    <Button variant={ 'outline-info' } onClick={ () => openEditPost() }>Edit</Button>
+                    <Button variant={ 'secondary' } onClick={ () => deletePost(postId) }>Delete</Button>
+                </div>
+                <Card.Footer>
+                    {
+                        comments && <>
+                            <h3>Comments: </h3>
+                            { comments.map((comment) => <div key={ comment.id }>{ comment.name }</div>) }
+                        </>
+                    }
+                </Card.Footer>
+            </Card.Body>
+        </Card>
     );
 
 }

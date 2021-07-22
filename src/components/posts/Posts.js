@@ -23,7 +23,7 @@ export const Posts = () => {
 
     useEffect(() => {
         if (+userId !== id) {
-            dispatch(getUserPostsThunk(userId))
+            dispatch(getUserPostsThunk(userId));
         }
     }, [userId]);
 
@@ -39,7 +39,7 @@ export const Posts = () => {
             <div className={ styles.buttonGroup }>
                 <Button variant={ 'success' }
                         onClick={ () => {
-                            dispatch(setIsOpenModal(true))
+                            dispatch(setIsOpenModal(true));
                             dispatch(setUserId(+userId));
                         } }>Add new</Button>
                 <Button variant={ "danger" }

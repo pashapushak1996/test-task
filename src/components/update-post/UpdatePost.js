@@ -1,5 +1,5 @@
 import {useState} from "react";
-import styles from './UpdatePost.css';
+import styles from './UpdatePost.module.css';
 import {updatePostThunk} from "../../redux/reducers/posts-reducer";
 import {useDispatch} from "react-redux";
 import {Button} from "react-bootstrap";
@@ -27,23 +27,23 @@ export const UpdatePost = ({post}) => {
     }
 
     return (
-        <form className={ styles.form }>
+        <div className={ styles.container }>
             <h5>Edit post:</h5>
-            <div className={ styles.formItem }>
+            <div className={ styles.item }>
                 <label>Title:</label>
                 <input type="text"
                        onChange={ onChange }
                        defaultValue={ post.title }
                        name={ 'title' }/>
             </div>
-            <div className={ styles.formItem }>
+            <div className={ styles.item }>
                 <label>Body:</label>
                 <textarea
                     onChange={ onChange }
                     defaultValue={ post.body }
                     name={ 'body' }/>
             </div>
-            <div className={ styles.formButtons }>
+            <div className={ styles.buttons }>
                 <Button
                     onClick={ () => updatePost() }
                     variant={ 'success' }>Save</Button>
@@ -51,8 +51,7 @@ export const UpdatePost = ({post}) => {
                     onClick={ () => closeEditPost() }
                     variant={ 'danger' }>Cancel</Button>
             </div>
-        </form>
-
+        </div>
     );
 }
 
